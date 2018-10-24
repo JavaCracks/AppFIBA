@@ -119,7 +119,7 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
     @Override
     protected Node<T> removeValue(T value) {
         // Find node to remove
-        Node<T> nodeToRemoved = this.getNode(value);
+        Node<T> nodeToRemoved = this.search(value);
         if (nodeToRemoved==null)
             return null;
 

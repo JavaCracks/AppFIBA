@@ -59,7 +59,7 @@ public class TreeMap<K extends Comparable<K>, V> implements IMap<K,V> {
      */
     @Override
     public V get(K key) {
-        BinarySearchTree.Node<K> node = tree.getNode(key);
+        BinarySearchTree.Node<K> node = tree.search(key);
         TreeMapNode<K, V> mapNode = (TreeMapNode<K, V>) node;
         return mapNode.value;
     }

@@ -113,7 +113,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
      */
     @Override
     public boolean contains(T value) {
-        Node<T> node = getNode(value);
+        Node<T> node = search(value);
         return (node != null);
     }
 
@@ -125,7 +125,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
      * @return Node<T> representing first reference of value in tree or NULL if
      *         not found.
      */
-    protected Node<T> getNode(T value) {
+    public Node<T> search(T value) {
         Node<T> node = root;
         while (node != null && node.id != null) {
             if (value.compareTo(node.id) < 0) {
@@ -272,7 +272,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
      * @return Node<T> which was removed from the tree.
      */
     protected Node<T> removeValue(T value) {
-        Node<T> nodeToRemoved = this.getNode(value);
+        Node<T> nodeToRemoved = this.search(value);
         if (nodeToRemoved != null) 
             nodeToRemoved = removeNode(nodeToRemoved);
         return nodeToRemoved;

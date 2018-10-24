@@ -1,5 +1,6 @@
 package dataStructures;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -11,9 +12,13 @@ import java.util.List;
  * Justin Wetherell 
  */
 @SuppressWarnings("unchecked")
-public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> {
+public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> implements Serializable {
 
-    protected static final boolean BLACK = false;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected static final boolean BLACK = false;
     protected static final boolean RED = true;
 
     /**

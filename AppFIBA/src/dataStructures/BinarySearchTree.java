@@ -608,7 +608,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
         return TreePrinter.getString(this);
     }
 
-    protected static class Node<T extends Comparable<T>> {
+    public static class Node<T extends Comparable<T>> {
 
         protected T id = null;
         protected Node<T> parent = null;

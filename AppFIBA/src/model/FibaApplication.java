@@ -158,6 +158,15 @@ public class FibaApplication {
 		
 	}
 	
+	public void refillPlayersByUSG() {
+		
+	
+		
+		
+		
+		
+	}
+	
 	
 	public AVLTree<Player> getPlayersByUSG() {
 		return playersByUSG;

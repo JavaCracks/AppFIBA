@@ -88,18 +88,18 @@ class AVLTreeTest extends TestCase{
 	}
 	
 	@Test
-	//Do for comprobate the tree in Strings
+	//Do for comprobate the method add in the tree with Strings
 	public void testAddValueString() {
 		stageTwo();
 		Player[] arr=new Player[10];
-		arr[0]=playerFive;
+		arr[0]=playerFour;
 		arr[1]=playerThree;
-		arr[2]=playerEight;
-		arr[3]=playerFour;
-		arr[4]=playerOne;
+		arr[2]=playerFive;
+		arr[3]=playerEight;
+		arr[4]=playerTwo;
 		arr[5]=playerSix;
-		arr[6]=playerNine;
-		arr[7]=playerTwo;
+		arr[6]=playerOne;
+		arr[7]=playerNine;
 		arr[8]=player;
 		arr[9]=playerSeven;
 				
@@ -116,7 +116,7 @@ class AVLTreeTest extends TestCase{
 		tree.add(playerEight);
 		tree.add(playerNine);
 		//System.out.println(Arrays.toString(tree.getDFS(DepthFirstSearchOrder.inOrder)));
-		assertArrayEquals(arr, tree.getDFS(DepthFirstSearchOrder.inOrder));
+		assertArrayEquals(arr, tree.getDFS(DepthFirstSearchOrder.preOrder));
 		
 		
 		
@@ -150,14 +150,99 @@ class AVLTreeTest extends TestCase{
 		tree.add(playerEight);
 		tree.add(playerNine);
 		tree.remove(playerFive);
-		System.out.println(Arrays.toString(tree.getDFS(DepthFirstSearchOrder.inOrder)));
+		//System.out.println(Arrays.toString(tree.getDFS(DepthFirstSearchOrder.inOrder)));
 		assertArrayEquals(arr, tree.getDFS(DepthFirstSearchOrder.inOrder));
 
 		
 	}
 
-
+	@Test
+	//Do for comprobate the method remove in the tree with Strings
+	public void removeString() {
+		stageTwo();
+		Player[] arr=new Player[9];
+		arr[0]=playerOne;
+		arr[1]=playerThree;
+		arr[2]=playerFive;
+		arr[3]=playerEight;
+		arr[4]=playerTwo;
+		arr[5]=playerSix;
+		arr[6]=playerNine;
+		arr[7]=player;
+		arr[8]=playerSeven;
+				
+		
+		
+		tree.add(player);
+		tree.add(playerOne);
+		tree.add(playerTwo);
+		tree.add(playerThree);
+		tree.add(playerFour);
+		tree.add(playerFive);
+		tree.add(playerSix);
+		tree.add(playerSeven);
+		tree.add(playerEight);
+		tree.add(playerNine);
+		tree.remove(playerFour);
+		System.out.println(Arrays.toString(tree.getDFS(DepthFirstSearchOrder.preOrder)));
+		assertArrayEquals(arr, tree.getDFS(DepthFirstSearchOrder.preOrder));
+		
+	}
 	
+	@Test
+	public void testSearch() {
+		stageOne();
+		tree.add(player);
+		tree.add(playerOne);
+		tree.add(playerTwo);
+		tree.add(playerThree);
+		tree.add(playerFour);
+		tree.add(playerFive);
+		tree.add(playerSix);
+		tree.add(playerSeven);
+		tree.add(playerEight);
+		tree.add(playerNine);
+		
+		assertEquals(playerEight, tree.search(playerEight).getID());
+		assertEquals(null, tree.search(new Player(25.8)));
+	}
+	
+	@Test
+	public void testClear() {
+		stageOne();
+		tree.add(player);
+		tree.add(playerOne);
+		tree.add(playerTwo);
+		tree.add(playerThree);
+		tree.add(playerFour);
+		tree.add(playerFive);
+		tree.add(playerSix);
+		tree.add(playerSeven);
+		tree.add(playerEight);
+		tree.add(playerNine);
+		tree.clear();
+		
+		assertEquals(0, tree.size());
+	}
+	
+	@Test
+	public void testSize() {
+		stageOne();
+		tree.add(player);
+		tree.add(playerOne);
+		tree.add(playerTwo);
+		tree.add(playerThree);
+		tree.add(playerFour);
+		tree.add(playerFive);
+		tree.add(playerSix);
+		tree.add(playerSeven);
+		tree.add(playerEight);
+		tree.add(playerNine);
+		
+		assertEquals(10, tree.size());
+		
+		
+	}
 
 	
 	

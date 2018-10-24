@@ -628,10 +628,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
             this.id = id;
         }
 
+        public T getID() {
+        
+        return id;	
+        	
+        }
+        
         /**
          * {@inheritDoc}
          */
         @Override
+
         public String toString() {
             return "id=" + id + " parent=" + ((parent != null) ? parent.id : "NULL") + " lesser="
                     + ((lesser != null) ? lesser.id : "NULL") + " greater=" + ((greater != null) ? greater.id : "NULL");

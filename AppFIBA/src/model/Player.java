@@ -35,6 +35,39 @@ public class Player implements Comparable<Player> {
 		this.height = height;
 		this.criteria = criteria;
 	}
+	
+	public Player(double usg) {
+		this.usg=usg;
+		name=null;
+		year=0;
+		team=null;
+		age=0;
+		ast=0.0;
+		drb=0.0;
+		defense=0.0;
+		offense=0.0;
+		salary=null;
+		weight=0;
+		height=0;
+		criteria=5;
+	}
+	
+	public Player(String name) {
+		this.name=name;
+		year=0;
+		team=null;
+		age=0;
+		ast=0.0;
+		usg=0.0;
+		drb=0.0;
+		defense=0.0;
+		offense=0.0;
+		salary=null;
+		weight=0;
+		height=0;
+		criteria=1;
+	}
+	
 
 	public String getName() {
 		return name;
@@ -272,6 +305,11 @@ public class Player implements Comparable<Player> {
 		}
 
 		return r;
+	}
+	
+	@Override
+	public String toString() {
+		return usg +" ";
 	}
 
 }

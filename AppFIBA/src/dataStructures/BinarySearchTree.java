@@ -82,7 +82,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
 
         Node<T> node = root;
         while (node != null) {
-            if (newNode.id.compareTo(node.id) < 0) {
+            if (newNode.id.compareTo(node.id) <= 0) {
                 // Less than or equal to goes left
                 if (node.lesser == null) {
                     // New left node

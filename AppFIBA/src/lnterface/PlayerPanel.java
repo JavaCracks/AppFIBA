@@ -55,6 +55,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
         name.setHorizontalAlignment(JLabel.CENTER);
         name.setFont(new Font("Garamond", 1, 25));
 		name.setForeground(Color.WHITE);
+		name.setBackground(new Color(35,51,64));
         
         year = new JLabel("Year:");
         year.setHorizontalAlignment(JLabel.CENTER);

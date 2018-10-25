@@ -8,8 +8,21 @@ public class InitialPanel extends JPanel {
 	public static final Image BACKGROUND = Toolkit.getDefaultToolkit()
 			.createImage("./images/backgrounds/background.jpg");
 
+    private OptionsPanel options;
+    private PlayerPanel player;
+    
 	public InitialPanel() {
-
+      
+		
+		setLayout(new GridLayout(1, 2));
+		options = new OptionsPanel();
+		player = new PlayerPanel();
+		
+		options.setBackground(new Color(0,0,0,0));
+		player.setBackground(new Color(0,0,0,0));
+		add(options);
+		add(player);
+		 
 	}
 
 	@Override

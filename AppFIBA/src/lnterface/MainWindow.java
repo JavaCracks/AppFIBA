@@ -15,8 +15,8 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 
-		setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./images/logos/ball.png").getImage(),
-				new Point(0, 0), "Ball Cursor"));
+		//setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./images/logos/ball.png").getImage(),
+		//		new Point(0, 0), "Ball Cursor"));
 
 		Image icon = Toolkit.getDefaultToolkit().createImage("./images/logos/ball.png");
 

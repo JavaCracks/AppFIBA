@@ -1,5 +1,6 @@
 package dataStructures;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +11,14 @@ import java.util.List;
  **/
 
 
-public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
+public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> implements Serializable{
 
-    private enum Balance {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private enum Balance {
         LEFT_LEFT, LEFT_RIGHT, RIGHT_LEFT, RIGHT_RIGHT
     }
 
@@ -248,7 +254,7 @@ public class AVLTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         return AVLTreePrinter.getString(this);
     }
 
-    protected static class AVLNode<T extends Comparable<T>> extends Node<T> {
+    protected static class AVLNode<T extends Comparable<T>> extends Node<T> implements Serializable{
 
         protected int height = 1;
 

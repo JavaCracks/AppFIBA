@@ -1,5 +1,6 @@
 package dataStructures;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -17,9 +18,14 @@ import java.util.Set;
  * Justin Wetherell 
  */
 @SuppressWarnings("unchecked")
-public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
+public class BinarySearchTree<T extends Comparable<T>> implements ITree<T>, Serializable{
 
-    private int modifications = 0;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private int modifications = 0;
 
     protected static final Random RANDOM = new Random();
 
@@ -608,7 +614,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
         return TreePrinter.getString(this);
     }
 
-    public static class Node<T extends Comparable<T>> {
+    public static class Node<T extends Comparable<T>> implements Serializable{
 
         protected T id = null;
         protected Node<T> parent = null;

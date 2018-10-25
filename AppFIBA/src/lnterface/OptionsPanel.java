@@ -151,6 +151,38 @@ public class OptionsPanel extends JPanel implements ActionListener {
 
 
 
+	public JComboBox getCriteriaCombo() {
+		return criteriaCombo;
+	}
+
+	public void setCriteriaCombo(JComboBox criteriaCombo) {
+		this.criteriaCombo = criteriaCombo;
+	}
+
+	public JTextField getSearchTxt() {
+		return searchTxt;
+	}
+
+	public void setSearchTxt(JTextField searchTxt) {
+		this.searchTxt = searchTxt;
+	}
+
+	public JList getListSearch() {
+		return listSearch;
+	}
+
+	public void setListSearch(JList listSearch) {
+		this.listSearch = listSearch;
+	}
+
+	public AddWindow getWindow() {
+		return window;
+	}
+
+	public void setWindow(AddWindow window) {
+		this.window = window;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
         String a = e.getActionCommand();

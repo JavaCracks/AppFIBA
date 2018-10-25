@@ -229,6 +229,126 @@ public void components() {
 	
 	
 	
+	public JTextField getNameTxt() {
+	return nameTxt;
+}
+
+
+public void setNameTxt(JTextField nameTxt) {
+	this.nameTxt = nameTxt;
+}
+
+
+public JTextField getYearTxt() {
+	return yearTxt;
+}
+
+
+public void setYearTxt(JTextField yearTxt) {
+	this.yearTxt = yearTxt;
+}
+
+
+public JTextField getTeamTxt() {
+	return teamTxt;
+}
+
+
+public void setTeamTxt(JTextField teamTxt) {
+	this.teamTxt = teamTxt;
+}
+
+
+public JTextField getAgeTxt() {
+	return ageTxt;
+}
+
+
+public void setAgeTxt(JTextField ageTxt) {
+	this.ageTxt = ageTxt;
+}
+
+
+public JTextField getUsgTxt() {
+	return usgTxt;
+}
+
+
+public void setUsgTxt(JTextField usgTxt) {
+	this.usgTxt = usgTxt;
+}
+
+
+public JTextField getAstTxt() {
+	return astTxt;
+}
+
+
+public void setAstTxt(JTextField astTxt) {
+	this.astTxt = astTxt;
+}
+
+
+public JTextField getDrbTxt() {
+	return drbTxt;
+}
+
+
+public void setDrbTxt(JTextField drbTxt) {
+	this.drbTxt = drbTxt;
+}
+
+
+public JTextField getDefenseTxt() {
+	return defenseTxt;
+}
+
+
+public void setDefenseTxt(JTextField defenseTxt) {
+	this.defenseTxt = defenseTxt;
+}
+
+
+public JTextField getOffenseTxt() {
+	return offenseTxt;
+}
+
+
+public void setOffenseTxt(JTextField offenseTxt) {
+	this.offenseTxt = offenseTxt;
+}
+
+
+public JTextField getSalaryTxt() {
+	return salaryTxt;
+}
+
+
+public void setSalaryTxt(JTextField salaryTxt) {
+	this.salaryTxt = salaryTxt;
+}
+
+
+public JTextField getWeightTxt() {
+	return weightTxt;
+}
+
+
+public void setWeightTxt(JTextField weightTxt) {
+	this.weightTxt = weightTxt;
+}
+
+
+public JTextField getHeightTxt() {
+	return heightTxt;
+}
+
+
+public void setHeightTxt(JTextField heightTxt) {
+	this.heightTxt = heightTxt;
+}
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

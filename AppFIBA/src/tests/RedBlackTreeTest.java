@@ -45,7 +45,7 @@ class RedBlackTreeTest extends TestCase {
 	
 	
 	@Test
-	public void add() {
+	public void testAdd() {
 		stageOne();
 		tree.add(player);
 		tree.add(playerOne);
@@ -76,7 +76,7 @@ class RedBlackTreeTest extends TestCase {
 	}
 	
 	@Test
-	public void remove() {
+	public void testRemove() {
 		stageOne();
 		tree.add(player);
 		tree.add(playerOne);
@@ -106,7 +106,7 @@ class RedBlackTreeTest extends TestCase {
 	}
 	
 	@Test
-	public void clear() {
+	public void testClear() {
 		stageOne();
 		tree.add(player);
 		tree.add(playerOne);
@@ -125,7 +125,7 @@ class RedBlackTreeTest extends TestCase {
 	}
 	
 	@Test
-	public void size() {
+	public void testSize() {
 		stageOne();
 		tree.add(player);
 		tree.add(playerOne);
@@ -143,7 +143,7 @@ class RedBlackTreeTest extends TestCase {
 	}
 	
 	@Test
-	public void search() {
+	public void testSearch() {
 		stageOne();
 		tree.add(player);
 		tree.add(playerOne);

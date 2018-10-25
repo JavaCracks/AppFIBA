@@ -158,7 +158,7 @@ class AVLTreeTest extends TestCase{
 
 	@Test
 	//Do for comprobate the method remove in the tree with Strings
-	public void removeString() {
+	public void testRemoveString() {
 		stageTwo();
 		Player[] arr=new Player[9];
 		arr[0]=playerOne;
@@ -184,7 +184,7 @@ class AVLTreeTest extends TestCase{
 		tree.add(playerEight);
 		tree.add(playerNine);
 		tree.remove(playerFour);
-		System.out.println(Arrays.toString(tree.getDFS(DepthFirstSearchOrder.preOrder)));
+		
 		assertArrayEquals(arr, tree.getDFS(DepthFirstSearchOrder.preOrder));
 		
 	}

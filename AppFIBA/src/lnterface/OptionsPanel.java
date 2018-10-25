@@ -55,7 +55,7 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		data[10]= "weight";
 		data[11]= "height";
 		criteriaCombo = new JComboBox<String>(data);
-		
+		criteriaCombo.addActionListener(this);
 
 		
 		

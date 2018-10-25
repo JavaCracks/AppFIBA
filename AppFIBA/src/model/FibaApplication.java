@@ -397,16 +397,16 @@ public class FibaApplication {
 
 	}
 
-	public static void main(String[] args) {
-
-		FibaApplication app = new FibaApplication();
-
-		ArrayList<Player> p = app.searchByCriteriaYear(1995);
-		
-		System.out.println(p);
-
-		System.out.println(p.size());
-
-	}
+//	public static void main(String[] args) {
+//
+//		FibaApplication app = new FibaApplication();
+//
+//		ArrayList<Player> p = app.searchByCriteriaYear(1995);
+//		
+//		System.out.println(p);
+//
+//		System.out.println(p.size());
+//
+//	}
 
 }

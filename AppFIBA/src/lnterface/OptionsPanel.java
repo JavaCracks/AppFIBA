@@ -2,10 +2,13 @@ package lnterface;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -19,8 +22,11 @@ import javax.swing.border.TitledBorder;
 import model.Player;
 
 public class OptionsPanel extends JPanel implements ActionListener {
-      
+	public final static Image LOGO = Toolkit.getDefaultToolkit()
+			.createImage("./images/logos/SEARCH.png");
 	   final static String ADD = "ADD"; 
+	   final static String SEARCH = ""; 
+
 	   final static String REMOVE = "REMOVE";   
 
 	
@@ -31,6 +37,7 @@ public class OptionsPanel extends JPanel implements ActionListener {
 	private JButton add;
 	private JButton remove;
 	private AddWindow window;
+	private JButton buttonSearch;
 	
 	
 	public OptionsPanel() {
@@ -63,16 +70,22 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		search = new JLabel("Search:");
 		searchTxt = new JTextField();
 		
-		DefaultListModel<Player> listModel = new DefaultListModel<Player>();
+		buttonSearch = new JButton(SEARCH);
+		buttonSearch.addActionListener(this);
+		buttonSearch.setActionCommand(SEARCH);
+
+		
+		
+	//	DefaultListModel<Player> listModel = new DefaultListModel<Player>();
 		listSearch = new JList<Player>();
-		listSearch.setFixedCellHeight(40);
-		listSearch.setFixedCellWidth(400);
-		listSearch.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		listSearch.setLayoutOrientation(JList.VERTICAL_WRAP);	
-		listSearch.setBackground(Color.GRAY);
-		listSearch.setFont(new Font("Garamond", 1, 24));
-		listSearch.setForeground(Color.WHITE);
-		JScrollPane myScrollList = new JScrollPane(listSearch);
+		//listSearch.setFixedCellHeight(40);
+		//listSearch.setFixedCellWidth(400);
+		//listSearch.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		//listSearch.setLayoutOrientation(JList.VERTICAL_WRAP);	
+		//listSearch.setBackground(Color.GRAY);
+		//listSearch.setFont(new Font("Garamond", 1, 24));
+		//listSearch.setForeground(Color.WHITE);
+	//	JScrollPane myScrollList = new JScrollPane(listSearch);
 
 		
 		add= new JButton(ADD);
@@ -120,6 +133,9 @@ public class OptionsPanel extends JPanel implements ActionListener {
 			 remove.setFont(new Font("Garamond", 1, 20));
 		      remove.setBackground(new Color(85,85,85,85));
 			  
+		      ImageIcon icon = new ImageIcon(LOGO);
+		      buttonSearch.setIcon(icon);
+		      buttonSearch.setBounds(560, 25, 50, 50);
 		  
 		  add(criteriaCombo);
 		  add(search);
@@ -128,6 +144,7 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		  
 		  add(add);
 		  add(remove);
+		  add(buttonSearch);
 
 	}
 

@@ -46,7 +46,7 @@ public class PlayerPanel extends JPanel implements ActionListener {
 	
 	public PlayerPanel() {
 		
-		
+		setBackground(Color.BLACK);
 		setLayout(new GridLayout(12, 2));
 		TitledBorder border1 = new TitledBorder("");
         setBorder(border1);
@@ -114,18 +114,40 @@ public class PlayerPanel extends JPanel implements ActionListener {
         
         
         nameTxt = new JTextField();
-        nameTxt.setBounds(30,30,12,12);
+        nameTxt.setBackground(new Color(85,85,85,85));
+
         yearTxt = new JTextField();
+        yearTxt.setBackground(new Color(85,85,85,85));
+        
         teamTxt = new JTextField();
+        teamTxt.setBackground(new Color(85,85,85,85));
+      
         ageTxt = new JTextField();
+        ageTxt.setBackground(new Color(85,85,85,85));
+        
         usgTxt = new JTextField();
+        usgTxt.setBackground(new Color(85,85,85,85));
+        
         astTxt = new JTextField();
+        astTxt.setBackground(new Color(85,85,85,85));
+        
         drbTxt = new JTextField();
+        drbTxt.setBackground(new Color(85,85,85,85));
+        
         defenseTxt = new JTextField();
+        defenseTxt.setBackground(new Color(85,85,85,85));
+        
         offenseTxt = new JTextField();
+        offenseTxt.setBackground(new Color(85,85,85,85));
+        
         salaryTxt = new JTextField();
+        salaryTxt.setBackground(new Color(85,85,85,85));
+        
         weightTxt = new JTextField();
+        weightTxt.setBackground(new Color(85,85,85,85));
+        
         heightTxt = new JTextField();
+        heightTxt.setBackground(new Color(85,85,85,85));
         
         modify = new JButton(MODIFY);
         modify.addActionListener(this);

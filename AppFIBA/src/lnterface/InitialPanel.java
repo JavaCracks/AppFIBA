@@ -18,8 +18,8 @@ public class InitialPanel extends JPanel {
 		options = new OptionsPanel();
 		player = new PlayerPanel();
 		
-		options.setBackground(new Color(0,0,0,0));
-		player.setBackground(new Color(0,0,0,0));
+		options.setBackground(new Color(125,125,125,125));
+		player.setBackground(new Color(45,45,45,195));
 		add(options);
 		add(player);
 		 

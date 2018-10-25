@@ -382,8 +382,7 @@ public class FibaApplication {
 
 		Player[] years = playersByYear.getSorted();
 
-		boolean stop = false;
-		for (int i = 0; i < years.length && !stop; i++) {
+		for (int i = 0; i < years.length; i++) {
 
 			if (years[i].getYear() == p) {
 
@@ -397,16 +396,206 @@ public class FibaApplication {
 
 	}
 
-//	public static void main(String[] args) {
-//
-//		FibaApplication app = new FibaApplication();
-//
-//		ArrayList<Player> p = app.searchByCriteriaYear(1995);
-//		
-//		System.out.println(p);
-//
-//		System.out.println(p.size());
-//
-//	}
+	public ArrayList<Player> searchByCriteriaTeam(String p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] teams = playersByTeam.getSorted();
+
+		for (int i = 0; i < teams.length; i++) {
+
+			if (teams[i].getTeam().equalsIgnoreCase(p)) {
+
+				players.add(teams[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaAge(int p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] ages = playersByAge.getSorted();
+
+		for (int i = 0; i < ages.length; i++) {
+
+			if (ages[i].getAge() == p) {
+
+				players.add(ages[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaUSG(double p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] usgs = playersByUSG.getSorted();
+
+		for (int i = 0; i < usgs.length; i++) {
+
+			if (usgs[i].getUsg() == p) {
+
+				players.add(usgs[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaAST(double p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] asts = playersByAST.getSorted();
+
+		for (int i = 0; i < asts.length; i++) {
+
+			if (asts[i].getAst() == p) {
+
+				players.add(asts[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaDRB(double p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] drbs = playersByDRB.getSorted();
+
+		for (int i = 0; i < drbs.length; i++) {
+
+			if (drbs[i].getDrb() == p) {
+
+				players.add(drbs[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaDefense(double p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] defenses = playersByDefense.toCollection().toArray(new Player[0]);
+		Arrays.sort(defenses);
+
+		for (int i = 0; i < defenses.length; i++) {
+
+			if (defenses[i].getDefense() == p) {
+
+				players.add(defenses[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaOffense(double p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] offenses = playersByOffense.toCollection().toArray(new Player[0]);
+		Arrays.sort(offenses);
+
+		for (int i = 0; i < offenses.length; i++) {
+
+			if (offenses[i].getOffense() == p) {
+
+				players.add(offenses[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaSalary(String p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] salarys = playersBySalary.getSorted();
+
+		for (int i = 0; i < salarys.length; i++) {
+
+			if (salarys[i].getSalary().equalsIgnoreCase(p)) {
+
+				players.add(salarys[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaWeight(int p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] w = playersByWeight.getSorted();
+
+		for (int i = 0; i < w.length; i++) {
+
+			if (w[i].getWeight() == p) {
+
+				players.add(w[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public ArrayList<Player> searchByCriteriaHeight(int p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] h = playersByHeight.getSorted();
+
+		for (int i = 0; i < h.length; i++) {
+
+			if (h[i].getHeight() == p) {
+
+				players.add(h[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
 
 }

@@ -35,40 +35,58 @@ public class Player implements Comparable<Player> {
 		this.height = height;
 		this.criteria = criteria;
 	}
-	
-	public Player(double usg) {
-		this.usg=usg;
-		name=null;
-		year=0;
-		team=null;
-		age=0;
-		ast=0.0;
-		drb=0.0;
-		defense=0.0;
-		offense=0.0;
-		salary=null;
-		weight=0;
-		height=0;
-		criteria=5;
-	}
-	
-	public Player(String name) {
-		this.name=name;
-		year=0;
-		team=null;
-		age=0;
-		ast=0.0;
-		usg=0.0;
-		drb=0.0;
-		defense=0.0;
-		offense=0.0;
-		salary=null;
-		weight=0;
-		height=0;
-		criteria=1;
-	}
-	
 
+	public Player(double usg) {
+		this.usg = usg;
+		name = null;
+		year = 0;
+		team = null;
+		age = 0;
+		ast = usg;
+		drb = usg;
+		defense = usg;
+		offense = usg;
+		salary = null;
+		weight = 0;
+		height = 0;
+		criteria = 5;
+	}
+
+	public Player(String name) {
+		this.name = name;
+		year = 0;
+		team = name;
+		age = 0;
+		ast = 0.0;
+		usg = 0.0;
+		drb = 0.0;
+		defense = 0.0;
+		offense = 0.0;
+		salary = name;
+		weight = 0;
+		height = 0;
+		criteria = 1;
+	}
+
+	public Player(int num) {
+		
+		name = null;
+		year = num;
+		team = name;
+		age = num;
+		ast = 0.0;
+		usg = 0.0;
+		drb = 0.0;
+		defense = 0.0;
+		offense = 0.0;
+		salary = name;
+		weight = num;
+		height = num;
+		criteria = 1;
+		
+		
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -306,11 +324,88 @@ public class Player implements Comparable<Player> {
 
 		return r;
 	}
-	
+
 	@Override
 	public String toString() {
-		return name + " "+usg +" ";
+
+		String s = "";
+		switch (criteria) {
+
+		case 1:
+
+			s += name;
+
+			break;
+
+		case 2:
+
+			s += name + " - " + year;
+
+			break;
+
+		case 3:
+
+			s += name + " - " + team;
+
+			break;
+
+		case 4:
+
+			s += name + " - " + age;
+
+			break;
+
+		case 5:
+
+			s += name + " - " + usg + "%";
+
+			break;
+
+		case 6:
+
+			s += name + " - " + ast + "%";
+
+			break;
+
+		case 7:
+
+			s += name + " - " + drb;
+
+			break;
+
+		case 8:
+
+			s += name + " - " + defense;
+
+			break;
+
+		case 9:
+
+			s += name + " - " + offense;
+
+			break;
+
+		case 10:
+
+			s += name + " - " + salary;
+
+			break;
+
+		case 11:
+
+			s += name + " - " + weight;
+
+			break;
+
+		case 12:
+
+			s += name + " - " + height;
+
+			break;
+
+		}
+
+		return s;
 	}
-	
-	
+
 }

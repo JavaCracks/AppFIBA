@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import dataStructures.*;
 
@@ -52,10 +53,10 @@ public class FibaApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 //		putTreesInArrayList();
 //		save();
-	
+
 //		recover();
 //		assignTreesAfterRecover();
 
@@ -75,7 +76,6 @@ public class FibaApplication {
 		trees.add(playersBySalary);
 		trees.add(playersByWeight);
 		trees.add(playersByHeight);
-		
 
 	}
 
@@ -172,7 +172,7 @@ public class FibaApplication {
 //		playersBySalary = (AVLTree<Player>) trees.get(11);
 
 	}
-	
+
 	public void refillTrees() throws Exception {
 
 		FileReader fr = null;
@@ -200,32 +200,19 @@ public class FibaApplication {
 			int weight = Integer.parseInt(z[10]);
 			int height = Integer.parseInt(z[11]);
 
+			Player a = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 1);
+			Player b = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 2);
+			Player c = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 3);
+			Player d = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 4);
+			Player e = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 5);
+			Player f = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 6);
+			Player g = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 7);
+			Player h = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 8);
+			Player i = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 9);
+			Player j = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 10);
+			Player k = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 11);
+			Player l = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height, 12);
 
-			Player a = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					1);
-			Player b = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					2);
-			Player c = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					3);
-			Player d = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					4);
-			Player e = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					5);
-			Player f = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					6);
-			Player g = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					7);
-			Player h = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					8);
-			Player i = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					9);
-			Player j = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					10);
-			Player k = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					11);
-			Player l = new Player(name, year, team, age, usg, ast, drb, defense, offense, salary, weight, height,
-					12);
-			
 			playersByName.add(a);
 			playersByYear.add(b);
 			playersByTeam.add(c);
@@ -238,7 +225,6 @@ public class FibaApplication {
 			playersBySalary.add(j);
 			playersByWeight.add(k);
 			playersByHeight.add(l);
-
 
 		}
 
@@ -360,26 +346,67 @@ public class FibaApplication {
 		this.trees = trees;
 	}
 
-	/**public static void main(String[] args) {
+	public ArrayList<Player> searchByCriteriaName(String p) {
 
-		
-		FibaApplication app = new FibaApplication();	
-		
-		System.out.println(app.playersByName.size());
-		System.out.println(app.playersByYear.size());
-		System.out.println(app.playersByTeam.size());
-		System.out.println(app.playersByAge.size());
-		System.out.println(app.playersByUSG.size());
-		System.out.println(app.playersByAST.size());
-		System.out.println(app.playersByDRB.size());
-		System.out.println(app.playersByDefense.size());
-		System.out.println(app.playersByOffense.size());
-		System.out.println(app.playersBySalary.size());
-		System.out.println(app.playersByWeight.size());
-		System.out.println(app.playersByHeight.size());
-		
-	
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] names = playersByName.getSorted();
+
+//		int k = Arrays.binarySearch(names, new Player(p));
+
+		String[] pFirst = p.split(" ");
+
+		boolean stop = false;
+		for (int i = 0; i < names.length && !stop; i++) {
+
+			String name = names[i].getName();
+			String[] first = name.split(" ");
+
+			for (int l = 0; l < first.length; l++) {
+
+				if (pFirst[0].equalsIgnoreCase(first[l])) {
+
+					players.add(names[i]);
+
+				}
+			}
+		}
+
+		return players;
 
 	}
-**/
+
+	public ArrayList<Player> searchByCriteriaYear(int p) {
+
+		ArrayList<Player> players = new ArrayList<>();
+
+		Player[] years = playersByYear.getSorted();
+
+		boolean stop = false;
+		for (int i = 0; i < years.length && !stop; i++) {
+
+			if (years[i].getYear() == p) {
+
+				players.add(years[i]);
+
+			}
+
+		}
+
+		return players;
+
+	}
+
+	public static void main(String[] args) {
+
+		FibaApplication app = new FibaApplication();
+
+		ArrayList<Player> p = app.searchByCriteriaYear(1995);
+		
+		System.out.println(p);
+
+		System.out.println(p.size());
+
+	}
+
 }

@@ -3,9 +3,12 @@ package lnterface;
 import java.awt.*;
 import javax.swing.*;
 
+import model.FibaApplication;
+
 public class MainWindow extends JFrame {
 
 	private InitialPanel initial;
+	private FibaApplication fiba;
 
 	public MainWindow() {
 
@@ -13,7 +16,7 @@ public class MainWindow extends JFrame {
 		setLayout(new BorderLayout());
 		setSize(1280, 768);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
 
 		//setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon("./images/logos/ball.png").getImage(),
 		//		new Point(0, 0), "Ball Cursor"));
@@ -22,12 +25,23 @@ public class MainWindow extends JFrame {
 
 		setIconImage(icon);
 
-		initial = new InitialPanel();
+		fiba = new FibaApplication();
+		
+		
+		initial = new InitialPanel(this);
 
 		add(initial, BorderLayout.CENTER);
 
 		setVisible(true);
 
+	}
+
+	public FibaApplication getFiba() {
+		return fiba;
+	}
+
+	public void setFiba(FibaApplication fiba) {
+		this.fiba = fiba;
 	}
 
 	public static void main(String[] args) {

@@ -10,13 +10,15 @@ public class InitialPanel extends JPanel {
 
     private OptionsPanel options;
     private PlayerPanel player;
+    private MainWindow window;
     
-	public InitialPanel() {
+	public InitialPanel(MainWindow window) {
       
+		this.window = window;
 		
 		setLayout(new GridLayout(1, 2));
-		options = new OptionsPanel();
-		player = new PlayerPanel();
+		options = new OptionsPanel(this);
+		player = new PlayerPanel(this);
 		
 		options.setBackground(new Color(125,125,125,125));
 		player.setBackground(new Color(45,45,45,195));
@@ -34,6 +36,12 @@ public class InitialPanel extends JPanel {
 
 		
 		repaint();
+	}
+	
+	public MainWindow getMainWindow() {
+		
+	return window;	
+		
 	}
 
 }

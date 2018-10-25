@@ -44,10 +44,14 @@ public class PlayerPanel extends JPanel implements ActionListener {
 	private JTextField heightTxt; // Criteria 12
 	private JPanel AuxOne;
 	private JPanel AuxTwo;
+
+	private InitialPanel initial;
 	
 	private JButton modify;
 	
-	public PlayerPanel() {
+	public PlayerPanel(InitialPanel initial) {
+		
+		this.initial = initial;
 		
 		setLayout(new BorderLayout());
 		AuxOne = new JPanel();
@@ -83,17 +87,17 @@ public class PlayerPanel extends JPanel implements ActionListener {
         age.setFont(new Font("Garamond", 1, 25));
 		age.setForeground(Color.WHITE);
 
-        usg = new JLabel("Usg:");
+        usg = new JLabel("USG %:");
         usg.setHorizontalAlignment(JLabel.CENTER);
         usg.setFont(new Font("Garamond", 1, 25));
 		usg.setForeground(Color.WHITE);
 
-        ast = new JLabel("Ast:");
+        ast = new JLabel("AST %:");
         ast.setHorizontalAlignment(JLabel.CENTER);
         ast.setFont(new Font("Garamond", 1, 25));
 		ast.setForeground(Color.WHITE);
 
-        drb = new JLabel("Drb:");
+        drb = new JLabel("DRB %:");
         drb.setHorizontalAlignment(JLabel.CENTER);
         drb.setFont(new Font("Garamond", 1, 25));
 		drb.setForeground(Color.WHITE);
@@ -188,6 +192,9 @@ public class PlayerPanel extends JPanel implements ActionListener {
         modify = new JButton(MODIFY);
         modify.addActionListener(this);
         modify.setActionCommand(MODIFY);
+        modify.setBackground(new Color(85,85,85,85));
+        modify.setForeground(Color.WHITE);
+        modify.setFont(new Font("Garamond", 1, 16));
 
 		
         components();

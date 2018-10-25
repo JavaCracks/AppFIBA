@@ -1,11 +1,14 @@
 package lnterface;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -13,7 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -28,18 +33,41 @@ public class OptionsPanel extends JPanel implements ActionListener {
 
 	final static String REMOVE = "REMOVE";
 
+	private JPanel up;
+	private JPanel down;
+	private JPanel center;
 	private JComboBox criteriaCombo;
 	private JLabel search;
 	private JTextField searchTxt;
-	private JList listSearch;
+	private JList<Player> listSearch;
+	private DefaultListModel<Player> listModel;
 	private JButton add;
 	private JButton remove;
 	private AddWindow window;
 	private JButton buttonSearch;
+	private InitialPanel initial;
 
-	public OptionsPanel() {
+	public OptionsPanel(InitialPanel initial) {
 
-		setLayout(null);
+		this.initial = initial;
+
+		up = new JPanel();
+		down = new JPanel();
+		center = new JPanel();
+
+		up.setLayout(new GridLayout(1, 4));
+		up.setBackground(new Color(125, 125, 125, 125));
+
+		up.setLayout(new GridLayout(1, 4));
+		up.setBackground(new Color(125, 125, 125, 125));
+
+		down.setLayout(new GridLayout(1, 2));
+		down.setBackground(new Color(0, 0, 0, 0));
+
+		center.setLayout(new GridLayout(1, 1));
+		center.setBackground(new Color(0, 0, 0, 0));
+
+		setLayout(new BorderLayout());
 		TitledBorder border1 = new TitledBorder("");
 		setBorder(border1);
 
@@ -60,34 +88,62 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		data[12] = "Height";
 		criteriaCombo = new JComboBox<String>(data);
 		criteriaCombo.addActionListener(this);
+		criteriaCombo.setBackground(new Color(0, 0, 0, 125));
+		criteriaCombo.setForeground(Color.white);
 
 		search = new JLabel("Search:");
 		searchTxt = new JTextField();
 
-		buttonSearch = new JButton(SEARCH);
+		buttonSearch = new JButton("SEARCH");
 		buttonSearch.addActionListener(this);
 		buttonSearch.setActionCommand(SEARCH);
+		buttonSearch.setBackground(new Color(125, 125, 125, 125));
+		buttonSearch.setForeground(Color.WHITE);
 
-		// DefaultListModel<Player> listModel = new DefaultListModel<Player>();
-		listSearch = new JList<Player>();
-		// listSearch.setFixedCellHeight(40);
-		// listSearch.setFixedCellWidth(400);
-		// listSearch.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		// listSearch.setLayoutOrientation(JList.VERTICAL_WRAP);
-		// listSearch.setBackground(Color.GRAY);
-		// listSearch.setFont(new Font("Garamond", 1, 24));
-		// listSearch.setForeground(Color.WHITE);
-		// JScrollPane myScrollList = new JScrollPane(listSearch);
+		listModel = new DefaultListModel<Player>();
+		listSearch = new JList<Player>(listModel);
+		listSearch.setFixedCellHeight(40);
+		listSearch.setFixedCellWidth(620);
+		listSearch.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		listSearch.setBackground(Color.GRAY);
+		listSearch.setFont(new Font("Garamond", 1, 36));
+		listSearch.setForeground(Color.WHITE);
+		listSearch.setLayoutOrientation(JList.VERTICAL);
+		JScrollPane myScrollList = new JScrollPane(listSearch);
+		myScrollList.setVerticalScrollBar(new JScrollBar(JScrollBar.VERTICAL));
+		myScrollList.setBackground(new Color(0, 0, 0, 100));
+		
 
 		add = new JButton(ADD);
 		add.addActionListener(this);
 		add.setActionCommand(ADD);
+		add.setBackground(new Color(0, 0, 0, 125));
+		add.setForeground(Color.white);
 
 		remove = new JButton(REMOVE);
 		remove.addActionListener(this);
 		remove.setActionCommand(REMOVE);
+		remove.setBackground(new Color(0, 0, 0, 125));
+		remove.setForeground(Color.white);
 
 		components();
+
+		up.add(criteriaCombo);
+		up.add(search);
+		up.add(searchTxt);
+		up.add(buttonSearch);
+
+		down.add(add);
+		down.add(remove);
+
+		center.add(myScrollList);
+
+		add(up, BorderLayout.NORTH);
+
+		add(center, BorderLayout.CENTER);
+
+		add(down, BorderLayout.SOUTH);
+
 	}
 
 	public void components() {
@@ -120,19 +176,10 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		remove.setFont(new Font("Garamond", 1, 20));
 		remove.setBackground(new Color(85, 85, 85, 85));
 
-		ImageIcon icon = new ImageIcon(LOGO);
-		buttonSearch.setIcon(icon);
-		buttonSearch.setBackground(new Color(0,0,0,125));
+//		ImageIcon icon = new ImageIcon(LOGO);
+//		buttonSearch.setIcon(icon);
+		buttonSearch.setBackground(new Color(0, 0, 0, 125));
 		buttonSearch.setBounds(560, 20, 60, 60);
-
-		add(criteriaCombo);
-		add(search);
-		add(searchTxt);
-		add(listSearch);
-
-		add(add);
-		add(remove);
-		add(buttonSearch);
 
 	}
 
@@ -174,6 +221,43 @@ public class OptionsPanel extends JPanel implements ActionListener {
 
 		if (a.equals(ADD)) {
 			window.setVisible(true);
+		}
+
+		if (a.equals(SEARCH)) {
+
+			int c = criteriaCombo.getSelectedIndex();
+
+			if (c == 0) {
+
+				JOptionPane.showMessageDialog(null, "Please first select a criteria to search", "No criteria specified",
+						JOptionPane.ERROR_MESSAGE);
+
+			} else {
+
+				if (searchTxt.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Put data that you want to search in the text field",
+							"No data to search", JOptionPane.ERROR_MESSAGE);
+				} else {
+					switch (c) {
+
+					case 1:
+
+						ArrayList<Player> players = initial.getMainWindow().getFiba()
+								.searchByCriteriaName(searchTxt.getText());
+						
+						for(int i = 0; i<players.size(); i++) {
+							
+						listModel.addElement(players.get(i));	
+							
+							
+						}
+
+						break;
+
+					}
+
+				}
+			}
 		}
 
 	}

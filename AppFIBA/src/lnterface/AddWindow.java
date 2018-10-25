@@ -19,8 +19,7 @@ import javax.swing.border.TitledBorder;
 
 public class AddWindow extends JDialog implements ActionListener {
 
-	public static final Image BACKGROUND = Toolkit.getDefaultToolkit()
-			.createImage("./images/backgrounds/background.jpg");
+
 
 	final static String SAVE = "SAVE";
 

@@ -1,5 +1,6 @@
 package lnterface;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -16,7 +17,7 @@ import javax.swing.border.TitledBorder;
 public class PlayerPanel extends JPanel implements ActionListener {
 	
      
-	final static String MODIFY = "MODIFICAR";
+	final static String MODIFY = "MODIFY";
 	private JLabel name; // Criteria 1
 	private JLabel year; // Criteria 2
 	private JLabel team; // Criteria 3
@@ -41,17 +42,27 @@ public class PlayerPanel extends JPanel implements ActionListener {
 	private JTextField salaryTxt; // Criteria 10
 	private JTextField weightTxt; // Criteria 11
 	private JTextField heightTxt; // Criteria 12
+	private JPanel AuxOne;
+	private JPanel AuxTwo;
 	
 	private JButton modify;
 	
 	public PlayerPanel() {
 		
-		setBackground(Color.BLACK);
-		setLayout(new GridLayout(12, 2));
+		setLayout(new BorderLayout());
+		AuxOne = new JPanel();
+		AuxOne.setBackground(new Color(45,45,45,150));
+
+		
+		AuxTwo = new JPanel();
+		AuxTwo.setBackground(new Color(45,45,45,195));
+
+		AuxOne.setLayout(new GridLayout(12, 2));
+		AuxTwo.setLayout (new BorderLayout());
 		TitledBorder border1 = new TitledBorder("");
         setBorder(border1);
         
-        name = new JLabel("Nombre:");
+        name = new JLabel("Name:");
         name.setHorizontalAlignment(JLabel.CENTER);
         name.setFont(new Font("Garamond", 1, 25));
 		name.setForeground(Color.WHITE);
@@ -116,39 +127,63 @@ public class PlayerPanel extends JPanel implements ActionListener {
         
         nameTxt = new JTextField();
         nameTxt.setBackground(new Color(85,85,85,85));
+        nameTxt.setForeground(Color.WHITE);
+        nameTxt.setFont(new Font("Garamond", 1, 25));
 
         yearTxt = new JTextField();
         yearTxt.setBackground(new Color(85,85,85,85));
+        yearTxt.setForeground(Color.WHITE);
+        yearTxt.setFont(new Font("Garamond", 1, 25));
         
         teamTxt = new JTextField();
         teamTxt.setBackground(new Color(85,85,85,85));
+        teamTxt.setForeground(Color.WHITE);
+        teamTxt.setFont(new Font("Garamond", 1, 25));
       
         ageTxt = new JTextField();
         ageTxt.setBackground(new Color(85,85,85,85));
+        ageTxt.setForeground(Color.WHITE);
+        ageTxt.setFont(new Font("Garamond", 1, 25));
         
         usgTxt = new JTextField();
         usgTxt.setBackground(new Color(85,85,85,85));
+        usgTxt.setForeground(Color.WHITE);
+        usgTxt.setFont(new Font("Garamond", 1, 25));
         
         astTxt = new JTextField();
         astTxt.setBackground(new Color(85,85,85,85));
+        astTxt.setForeground(Color.WHITE);
+        astTxt.setFont(new Font("Garamond", 1, 25));
         
         drbTxt = new JTextField();
         drbTxt.setBackground(new Color(85,85,85,85));
+        drbTxt.setForeground(Color.WHITE);
+        drbTxt.setFont(new Font("Garamond", 1, 25));
         
         defenseTxt = new JTextField();
         defenseTxt.setBackground(new Color(85,85,85,85));
+        defenseTxt.setForeground(Color.WHITE);
+        defenseTxt.setFont(new Font("Garamond", 1, 25));
         
         offenseTxt = new JTextField();
         offenseTxt.setBackground(new Color(85,85,85,85));
+        offenseTxt.setForeground(Color.WHITE);
+        offenseTxt.setFont(new Font("Garamond", 1, 25));
         
         salaryTxt = new JTextField();
         salaryTxt.setBackground(new Color(85,85,85,85));
+        salaryTxt.setForeground(Color.WHITE);
+        salaryTxt.setFont(new Font("Garamond", 1, 25));
         
         weightTxt = new JTextField();
         weightTxt.setBackground(new Color(85,85,85,85));
+        weightTxt.setForeground(Color.WHITE);
+        weightTxt.setFont(new Font("Garamond", 1, 25));
         
         heightTxt = new JTextField();
         heightTxt.setBackground(new Color(85,85,85,85));
+        heightTxt.setForeground(Color.WHITE);
+        heightTxt.setFont(new Font("Garamond", 1, 25));
         
         modify = new JButton(MODIFY);
         modify.addActionListener(this);
@@ -160,20 +195,121 @@ public class PlayerPanel extends JPanel implements ActionListener {
 	
 	public void components() {
 		
-		add(name); add(nameTxt);
-		add(year); add(yearTxt);
-		add(team); add(teamTxt);
-		add(age); add(ageTxt);
-		add(usg); add(usgTxt);
-		add(ast); add(astTxt);
-		add(drb); add(drbTxt);
-		add(defense); add(defenseTxt);
-		add(offense); add(offenseTxt);
-		add(salary); add(salaryTxt);
-		add(weight); add(weightTxt);
-		add(height); add(heightTxt);
-
+		AuxOne.add(name); 	AuxOne.add(nameTxt);
+		AuxOne.add(year); 	AuxOne.add(yearTxt);
+		AuxOne.add(team); 	AuxOne.add(teamTxt);
+		AuxOne.add(age); 	AuxOne.add(ageTxt);
+		AuxOne.add(usg); 	AuxOne.add(usgTxt);
+		AuxOne.add(ast);	AuxOne. add(astTxt);
+		AuxOne.add(drb);	AuxOne. add(drbTxt);
+		AuxOne.add(defense); 	AuxOne.add(defenseTxt);
+		AuxOne.add(offense); 	AuxOne.add(offenseTxt);
+		AuxOne.add(salary); 	AuxOne.add(salaryTxt);
+		AuxOne.add(weight); 	AuxOne.add(weightTxt);
+		AuxOne.add(height);	AuxOne. add(heightTxt);
+         
+		AuxTwo.add(modify, BorderLayout.CENTER);
+		 add(AuxOne, BorderLayout.CENTER);
+		 add(AuxTwo, BorderLayout.SOUTH);
 		
+	}
+	
+	
+
+	public JTextField getNameTxt() {
+		return nameTxt;
+	}
+
+	public void setNameTxt(JTextField nameTxt) {
+		this.nameTxt = nameTxt;
+	}
+
+	public JTextField getYearTxt() {
+		return yearTxt;
+	}
+
+	public void setYearTxt(JTextField yearTxt) {
+		this.yearTxt = yearTxt;
+	}
+
+	public JTextField getTeamTxt() {
+		return teamTxt;
+	}
+
+	public void setTeamTxt(JTextField teamTxt) {
+		this.teamTxt = teamTxt;
+	}
+
+	public JTextField getAgeTxt() {
+		return ageTxt;
+	}
+
+	public void setAgeTxt(JTextField ageTxt) {
+		this.ageTxt = ageTxt;
+	}
+
+	public JTextField getUsgTxt() {
+		return usgTxt;
+	}
+
+	public void setUsgTxt(JTextField usgTxt) {
+		this.usgTxt = usgTxt;
+	}
+
+	public JTextField getAstTxt() {
+		return astTxt;
+	}
+
+	public void setAstTxt(JTextField astTxt) {
+		this.astTxt = astTxt;
+	}
+
+	public JTextField getDrbTxt() {
+		return drbTxt;
+	}
+
+	public void setDrbTxt(JTextField drbTxt) {
+		this.drbTxt = drbTxt;
+	}
+
+	public JTextField getDefenseTxt() {
+		return defenseTxt;
+	}
+
+	public void setDefenseTxt(JTextField defenseTxt) {
+		this.defenseTxt = defenseTxt;
+	}
+
+	public JTextField getOffenseTxt() {
+		return offenseTxt;
+	}
+
+	public void setOffenseTxt(JTextField offenseTxt) {
+		this.offenseTxt = offenseTxt;
+	}
+
+	public JTextField getSalaryTxt() {
+		return salaryTxt;
+	}
+
+	public void setSalaryTxt(JTextField salaryTxt) {
+		this.salaryTxt = salaryTxt;
+	}
+
+	public JTextField getWeightTxt() {
+		return weightTxt;
+	}
+
+	public void setWeightTxt(JTextField weightTxt) {
+		this.weightTxt = weightTxt;
+	}
+
+	public JTextField getHeightTxt() {
+		return heightTxt;
+	}
+
+	public void setHeightTxt(JTextField heightTxt) {
+		this.heightTxt = heightTxt;
 	}
 
 	@Override

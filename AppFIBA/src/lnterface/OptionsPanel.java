@@ -24,13 +24,13 @@ public class OptionsPanel extends JPanel implements ActionListener {
 	   final static String REMOVE = "REMOVE";   
 
 	
-	private JLabel criteria;
 	private JComboBox criteriaCombo;
 	private JLabel search;
 	private JTextField searchTxt;
 	private JList listSearch;
 	private JButton add;
 	private JButton remove;
+	private AddWindow window;
 	
 	
 	public OptionsPanel() {
@@ -40,26 +40,27 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		TitledBorder border1 = new TitledBorder("");
          setBorder(border1);
 		
-		criteria = new JLabel("Agregue Criterio:");
-		String[] data = new String[12];
-		data[0]= "name";
-		data[1]= "year";
-		data[2]= "team";
-		data[3]=  "age";
-		data[4]= "usg";
-		data[5]= "ast";
-		data[6]= "drb";
-		data[7]= "defense";
-		data[8]= "offense";
-		data[9]= "salary";
-		data[10]= "weight";
-		data[11]= "height";
+         window= new AddWindow(this);
+		String[] data = new String[13];
+		data[0]= "Add Criteria";
+		data[1]= "Name";
+		data[2]= "Year";
+		data[3]= "Team";
+		data[4]=  "Age";
+		data[5]= "Usg";
+		data[6]= "Ast";
+		data[7]= "Drb";
+		data[8]= "Defense";
+		data[9]= "Offense";
+		data[10]= "Salary";
+		data[11]= "Weight";
+		data[12]= "Height";
 		criteriaCombo = new JComboBox<String>(data);
 		criteriaCombo.addActionListener(this);
 
 		
 		
-		search = new JLabel("Buscar:");
+		search = new JLabel("Search:");
 		searchTxt = new JTextField();
 		
 		DefaultListModel<Player> listModel = new DefaultListModel<Player>();
@@ -88,25 +89,20 @@ public class OptionsPanel extends JPanel implements ActionListener {
 	
 	public void components() {
 		 
-		  criteria.setBounds(20, 20, 200, 40);
-		  criteria.setFont(new Font("Garamond", 1, 20));
-		  criteria.setForeground(Color.WHITE);
-	      criteria.setBackground(new Color(85,85,85,85));
-
-		  
-		  criteriaCombo.setBounds(220, 13, 200, 60);
+		 
+		  criteriaCombo.setBounds(40, 20, 200, 60);
 		  criteriaCombo.setFont(new Font("Garamond", 1, 20));
 	      criteriaCombo.setBackground(new Color(85,85,85,85));
 
 		  
-		  search.setBounds(20, 60, 200, 40);
+		  search.setBounds(200, 29, 200, 40);
 		  search.setFont(new Font("Garamond", 1, 20));
 		  search.setForeground(Color.WHITE);
 	      search.setBackground(new Color(85,85,85,85));
 	      search.setHorizontalAlignment(JLabel.CENTER);
 
 		  
-		  searchTxt.setBounds(220,60,200,40);
+		  searchTxt.setBounds(340,29,200,40);
 		  searchTxt.setFont(new Font("Garamond", 1, 20));
 		  searchTxt.setForeground(Color.WHITE);
 		  searchTxt.setBackground(new Color(85,85,85,85));
@@ -125,7 +121,6 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		      remove.setBackground(new Color(85,85,85,85));
 			  
 		  
-		  add(criteria);
 		  add(criteriaCombo);
 		  add(search);
 		  add(searchTxt);
@@ -137,9 +132,18 @@ public class OptionsPanel extends JPanel implements ActionListener {
 	}
 
 
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+        String a = e.getActionCommand();
+          
+        if(a.equals(ADD)) {
+        	window.setVisible(true);
+        }
+        
+        
 	}
+	
+
 }

@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import model.Player;
+
 public class PlayerPanel extends JPanel implements ActionListener {
 	
      
@@ -321,7 +323,15 @@ public class PlayerPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	
+	Player p = initial.getOptions().getListSearch().getSelectedValue();
+	
+	
+	
+	nameTxt.setText(p.getName());
+	
+		
+		
 		
 	}
 }

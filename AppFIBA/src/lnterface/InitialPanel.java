@@ -44,4 +44,16 @@ public class InitialPanel extends JPanel {
 		
 	}
 
+	public OptionsPanel getOptions() {
+		
+	return options;	
+		
+	}
+	
+	public PlayerPanel getPlayerPanel() {
+		
+	return player;	
+		
+	}
+	
 }

@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.jar.Attributes.Name;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -72,7 +73,7 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		setBorder(border1);
 
 		window = new AddWindow(this);
-		String[] data = new String[13];
+		String[] data = new String[12];
 		data[0] = "Add Criteria";
 		data[1] = "Name";
 		data[2] = "Year";
@@ -83,9 +84,8 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		data[7] = "DRB";
 		data[8] = "Defense";
 		data[9] = "Offense";
-		data[10] = "Salary";
-		data[11] = "Weight";
-		data[12] = "Height";
+		data[10] = "Weight";
+		data[11] = "Height";
 		criteriaCombo = new JComboBox<String>(data);
 		criteriaCombo.addActionListener(this);
 		criteriaCombo.setBackground(new Color(0, 0, 0, 125));
@@ -112,7 +112,6 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		JScrollPane myScrollList = new JScrollPane(listSearch);
 		myScrollList.setVerticalScrollBar(new JScrollBar(JScrollBar.VERTICAL));
 		myScrollList.setBackground(new Color(0, 0, 0, 100));
-		
 
 		add = new JButton(ADD);
 		add.addActionListener(this);
@@ -127,6 +126,28 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		remove.setForeground(Color.white);
 
 		components();
+
+		listSearch.getSelectionModel().addListSelectionListener(e -> {
+
+			if (listSearch.getSelectedValue() != null) {
+
+				Player p = listSearch.getSelectedValue();
+				initial.getPlayerPanel().getNameTxt().setText(p.getName());
+				initial.getPlayerPanel().getAgeTxt().setText(String.valueOf(p.getAge()));
+				initial.getPlayerPanel().getYearTxt().setText(String.valueOf(p.getYear()));
+				initial.getPlayerPanel().getAstTxt().setText(String.valueOf(p.getAst()));
+				initial.getPlayerPanel().getDrbTxt().setText(String.valueOf(p.getDrb()));
+				initial.getPlayerPanel().getOffenseTxt().setText(String.valueOf(p.getOffense()));
+				initial.getPlayerPanel().getDefenseTxt().setText(String.valueOf(p.getDefense()));
+				initial.getPlayerPanel().getWeightTxt().setText(String.valueOf(p.getWeight()));
+				initial.getPlayerPanel().getHeightTxt().setText(String.valueOf(p.getHeight()));
+				initial.getPlayerPanel().getSalaryTxt().setText(p.getSalary());
+				initial.getPlayerPanel().getUsgTxt().setText(String.valueOf(p.getUsg()));
+				initial.getPlayerPanel().getTeamTxt().setText(p.getTeam());
+
+			}
+
+		});
 
 		up.add(criteriaCombo);
 		up.add(search);
@@ -199,7 +220,7 @@ public class OptionsPanel extends JPanel implements ActionListener {
 		this.searchTxt = searchTxt;
 	}
 
-	public JList getListSearch() {
+	public JList<Player> getListSearch() {
 		return listSearch;
 	}
 
@@ -242,24 +263,294 @@ public class OptionsPanel extends JPanel implements ActionListener {
 
 					case 1:
 
+						long z = System.currentTimeMillis();
+						listModel.clear();
 						ArrayList<Player> players = initial.getMainWindow().getFiba()
 								.searchByCriteriaName(searchTxt.getText());
-						
-						for(int i = 0; i<players.size(); i++) {
-							
-						listModel.addElement(players.get(i));	
-							
-							
+
+						for (int i = 0; i < players.size(); i++) {
+
+							listModel.addElement(players.get(i));
+
+						}
+						long x = System.currentTimeMillis();
+
+						long time = (x - z) / 1000;
+
+						JOptionPane
+								.showMessageDialog(null,
+										"Se tardó:" + time + " en la búsqueda" + "\n" + "Se encontraron "
+												+ players.size() + " resultados",
+										"Tiempo y resultados", JOptionPane.ERROR_MESSAGE);
+
+						break;
+
+					case 2:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersYear = initial.getMainWindow().getFiba()
+									.searchByCriteriaYear(Integer.parseInt(searchTxt.getText()));
+
+							for (int i = 0; i < playersYear.size(); i++) {
+
+								listModel.addElement(playersYear.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersYear.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 3:
+
+						listModel.clear();
+						ArrayList<Player> playersTeam = initial.getMainWindow().getFiba()
+								.searchByCriteriaTeam(searchTxt.getText());
+
+						for (int i = 0; i < playersTeam.size(); i++) {
+
+							listModel.addElement(playersTeam.get(i));
+
+						}
+
+						JOptionPane.showMessageDialog(null,
+								"\n" + "Se encontraron " + playersTeam.size() + " resultados", "Resultados",
+								JOptionPane.ERROR_MESSAGE);
+
+						break;
+
+					case 4:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersAge = initial.getMainWindow().getFiba()
+									.searchByCriteriaAge(Integer.parseInt(searchTxt.getText()));
+
+							for (int i = 0; i < playersAge.size(); i++) {
+
+								listModel.addElement(playersAge.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersAge.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 5:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersUSG = initial.getMainWindow().getFiba()
+									.searchByCriteriaUSG(Double.parseDouble(searchTxt.getText()));
+
+							for (int i = 0; i < playersUSG.size(); i++) {
+
+								listModel.addElement(playersUSG.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersUSG.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 6:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersAST = initial.getMainWindow().getFiba()
+									.searchByCriteriaAST(Double.parseDouble(searchTxt.getText()));
+
+							for (int i = 0; i < playersAST.size(); i++) {
+
+								listModel.addElement(playersAST.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersAST.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 7:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersDRB = initial.getMainWindow().getFiba()
+									.searchByCriteriaDRB(Double.parseDouble(searchTxt.getText()));
+
+							for (int i = 0; i < playersDRB.size(); i++) {
+
+								listModel.addElement(playersDRB.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersDRB.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 8:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersDefense = initial.getMainWindow().getFiba()
+									.searchByCriteriaDefense(Double.parseDouble(searchTxt.getText()));
+
+							for (int i = 0; i < playersDefense.size(); i++) {
+
+								listModel.addElement(playersDefense.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersDefense.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 9:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersOffense = initial.getMainWindow().getFiba()
+									.searchByCriteriaOffense(Double.parseDouble(searchTxt.getText()));
+
+							for (int i = 0; i < playersOffense.size(); i++) {
+
+								listModel.addElement(playersOffense.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersOffense.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 10:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersWeight = initial.getMainWindow().getFiba()
+									.searchByCriteriaWeight(Integer.parseInt(searchTxt.getText()));
+
+							for (int i = 0; i < playersWeight.size(); i++) {
+
+								listModel.addElement(playersWeight.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersWeight.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
+						}
+
+						break;
+
+					case 11:
+
+						listModel.clear();
+
+						try {
+							ArrayList<Player> playersHeight = initial.getMainWindow().getFiba()
+									.searchByCriteriaHeight(Integer.parseInt(searchTxt.getText()));
+
+							for (int i = 0; i < playersHeight.size(); i++) {
+
+								listModel.addElement(playersHeight.get(i));
+
+							}
+
+							JOptionPane.showMessageDialog(null,
+									"\n" + "Se encontraron " + playersHeight.size() + " resultados", "Resultados",
+									JOptionPane.ERROR_MESSAGE);
+
+						} catch (Exception ex) {
+
+							JOptionPane.showMessageDialog(null, "Please insert a number", "Invalid Data",
+									JOptionPane.ERROR_MESSAGE);
+
 						}
 
 						break;
 
 					}
-
 				}
 			}
+
 		}
 
 	}
-
 }
